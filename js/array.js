@@ -172,7 +172,7 @@ function groupBy(objectArray, property) {
     }, {});
 }
 var groupedPeople = groupBy(people, 'age');
-console.log("按属性对object分类", groupedPeople);
+// console.log("按属性对object分类", groupedPeople);
 // { 
 //   20: [
 //     { name: 'Max', age: 20 }, 
@@ -181,12 +181,120 @@ console.log("按属性对object分类", groupedPeople);
 //   21: [{ name: 'Alice', age: 21 }] 
 // }
 
+// 使用扩展运算符和initialValue绑定包含在对象数组中的数组
+var friends = [{   //对象数组
+    name: 'Anna',
+    books: ['Bible', 'Harry Potter'],
+    age: 21
+}, {
+    name: 'Bob',
+    books: ['War and peace', 'Romeo and Juliet'],
+    age: 26
+}, {
+    name: 'Alice',
+    books: ['The Lord of the Rings', 'The Shining'],
+    age: 18
+}];
+var allbooks = friends.reduce(function (prev, curr) {
+    return [...prev, ...curr.books];
+}, ['Alphabet']);  //添加 Alphabet;
+//console.log("allbooks", allbooks);
+
+// 测试数组元素的值
+function isBiggerThan10(element, index, array) {
+    return element > 10;  //检测在数组中是否有元素大于 10。
+}
+[2, 5, 8, 1, 4].some(isBiggerThan10);  // false
+[12, 5, 8, 1, 4].some(isBiggerThan10); // true
+// 箭头函数
+[2, 5, 8, 1, 4].some(x => x > 10);  // false
+[12, 5, 8, 1, 4].some(x => x > 10); // true
 
 // 判断数组元素中是否存在某个值
-// function checkAvailability(arr, val) {
-//     return arr.some(function (arrVal) {
-//         return val === arrVal;
-//     });
-// }
-// var m = [1, 2, 2, 3, 5], n = [2, 3, 5]; 
-// console.log("checkAvailability", checkAvailability(n, m));
+var fruits = ['apple', 'banana', 'mango', 'guava'];
+function checkAvailability(arr, val) {
+    return arr.some(function (arrVal) {
+        return val === arrVal;
+    });
+}
+// 箭头函数
+function checkAvailability(arr, val) {
+    return arr.some(arrVal => val === arrVal);
+}
+// console.log("checkAvailability", checkAvailability(fruits, 'banana')); // true
+
+// 将任意值转换为布尔类型
+var TRUTHY_VALUES = [true, 'true', 1, 323];
+function getBoolean(value) {
+    'use strict';
+    if (typeof value === 'string') {
+        value = value.toLowerCase().trim();
+    }
+    return TRUTHY_VALUES.some(function (t) {
+        return t === value;
+    });
+}
+getBoolean(false);   // false
+getBoolean('false'); // false
+getBoolean(1);       // true
+getBoolean('true');  // true
+getBoolean(323);  // true
+
+// 排列
+var numbers = [4, 2, 5, 1, 3];
+numbers.sort(function (a, b) {
+    return b - a;
+});
+// 箭头函数
+// numbers.sort((a, b) => a - b);
+// console.log(numbers);
+
+//对象可以按价 value 排序
+var items = [
+    { name: 'Edward', value: 21 },
+    { name: 'Sharpe', value: 37 },
+    { name: 'And', value: 45 },
+    { name: 'The', value: -12 },
+    { name: 'Magnetic' },
+    { name: 'Zeros', value: 37 }
+];
+
+// 按价 value 排序
+var itemsSort = items.sort(function (a, b) {
+    return (a.value - b.value)
+});
+// console.log("按价 value 排序", itemsSort);
+// 按价 name 排序
+var nameSort = items.sort(function (a, b) {
+    var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
+});
+// console.log("按价 name 排序", nameSort);
+
+// 用 apply 将数组添加到另一个数组
+var array = ['a', 'b'];
+var elements = [0, 1, 2];
+array.push.apply(array, elements);
+// console.info(array); // ["a", "b", 0, 1, 2];
+
+// 一个数组中的最大/最小值
+function minOfArray(arr) {
+    var min = Infinity;
+    var QUANTUM = 32768;
+
+    for (var i = 0, len = arr.length; i < len; i += QUANTUM) {
+        var submin = Math.min.apply(null, arr.slice(i, Math.min(i + QUANTUM, len)));
+        min = Math.min(submin, min);
+    }
+
+    return min;
+}
+var min = minOfArray([5, 6, 2, 3, 7]);
+// console.log("min", min);
