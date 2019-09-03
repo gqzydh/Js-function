@@ -40,6 +40,12 @@ var arr3 = [1, 2, [2, 3, 4, [4, 5, 6]]];
 // flat() 方法会移除数组中的空项:
 // console.log("flat", arr3.flat(Infinity));  //使用 Infinity 作为深度，展开任意深度的嵌套数组
 
+// 数组去重 new Set()
+var array = [1, 1, 2, 3, 5, 5, 1]
+const uniqueArray = [...new Set(array)];  //基本类型的数组去重
+const uniqueArray_01 = Array.from(new Set(array));
+const uniqueArray_02 = array.filter((arr, index) => array.indexOf(arr) === index);
+
 // 数组去重合并
 function combine(){ 
     let arr = [].concat.apply([], arguments);  //没有去重复的新数组 
@@ -48,6 +54,18 @@ function combine(){
 } 
 var m = [1, 2, 2], n = [2, 3, 3]; 
 // console.log("combine", combine(m,n));  
+
+// 拍平多维数组
+var arr = [1, [2, '大漠'], 3, ['blog', '1', 2, 3]]
+const flatArray = [].concat(...arr)  //使用...运算符，将多维数组拍平
+// console.log(flatArray)
+function flattenArray(arr) {  //使用二维以上的数组
+    const flattened = [].concat(...arr);
+    return flattened.some(item => Array.isArray(item)) ? flattenArray(flattened) : flattened;
+}
+var array = [1, [2, '大漠'], 3, [['blog', '1'], 2, 3]];
+const flatArr = flattenArray(array);
+// console.log("使用二维以上的数组", flatArr);
 
 // 检测所有数组元素的大小
 function isBigEnough(element, index, array) {
@@ -298,3 +316,78 @@ function minOfArray(arr) {
 }
 var min = minOfArray([5, 6, 2, 3, 7]);
 // console.log("min", min);
+
+// 从数组中获取最大值和最小值
+var numbers = [15, 80, -9, 90, -99];
+const maxInNumbers = Math.max.apply(Math, numbers);
+const minInNumbers = Math.min.apply(Math, numbers);
+// 箭头函数
+Math.max(...numbers);
+Math.min(...numbers);
+
+//确保数组的长度
+var array = Array(5).fill('');   //确保每行的数据长度相等
+
+//数组映射
+var array = [
+    {
+        name: '大漠',
+        email: 'w3cplus@hotmail.com'
+    },
+    {
+        name: 'Airen',
+        email: 'airen@gmail.com'
+    }
+]
+const name = Array.from(array, ({name}) => name);
+// console.log("数组映射", name);
+
+// 数组截断
+var array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+array.length = 4   //特别简洁的解决方案
+array = array.slice(0, 4);  //slice()方法运行更快,性能更好
+// console.log("数组截断", array) 
+
+// 过滤掉数组中的falsy值
+var array = [0, 1, '0', '1', '大漠', 'w3cplus.com', undefined, true, false, null, 'undefined',
+    'null', NaN, 'NaN', '1' + 0];
+var falsyArray = array.map(item => { return item }).filter(Boolean);
+// console.log("过滤掉数组中的falsy值", falsyArray);
+
+// 获取数组的最后一项
+var array = [1, 2, 3, 4, 5, 6, 7];
+const lastArrayVal = array.slice(-1);
+const lastArrayVal_01 = array.slice(array.length - 1);
+
+// 过滤并排序字符串列表
+var keywords = ['do', 'if', 'in', 'for', 'new', 'try', 'var', 'case', 'else', 'enum', 'null',
+    'this', 'true', 'void', 'with', 'break', 'catch', 'class', 'const', 'false', 'super', 'throw',
+    'while', 'delete', 'export', 'import', 'return', 'switch', 'typeof', 'default', 'extends',
+    'finally', 'continue', 'debugger', 'function', 'do', 'if', 'in', 'for', 'int', 'new', 'try',
+    'var', 'byte', 'case', 'char', 'else', 'enum', 'goto', 'long', 'null', 'this', 'true', 'void',
+    'with', 'break', 'catch', 'class', 'const', 'false', 'final', 'float', 'short', 'super', 'throw',
+    'while', 'delete', 'double', 'export', 'import', 'native', 'public', 'return', 'static', 'switch',
+    'throws', 'typeof', 'boolean', 'default', 'extends', 'finally', 'package', 'private', 'abstract',
+    'continue', 'debugger', 'function', 'volatile', 'interface', 'protected', 'transient', 'implements',
+    'instanceof', 'synchronized', 'do', 'if', 'in', 'for', 'let', 'new', 'try', 'var', 'case', 'else',
+    'enum', 'eval', 'null', 'this', 'true', 'void', 'with', 'break', 'catch', 'class', 'const', 'false',
+    'super', 'throw', 'while', 'yield', 'delete', 'export', 'import', 'public', 'return', 'static',
+    'switch', 'typeof', 'default', 'extends', 'finally', 'package', 'private', 'continue', 'debugger',
+    'function', 'arguments', 'interface', 'protected', 'implements', 'instanceof', 'do', 'if', 'in',
+    'for', 'let', 'new', 'try', 'var', 'case', 'else', 'enum', 'eval', 'null', 'this', 'true', 'void',
+    'with', 'await', 'break', 'catch', 'class', 'const', 'false', 'super', 'throw', 'while', 'yield',
+    'delete', 'export', 'import', 'public', 'return', 'static', 'switch', 'typeof', 'default', 'extends',
+    'finally', 'package', 'private', 'continue', 'debugger', 'function', 'arguments', 'interface',
+    'protected', 'implements', 'instanceof'];
+const filteredAndSortedKeywords = keywords
+    .filter((keyword, index) => keywords.lastIndexOf(keyword) === index)
+    .sort((a, b) => a < b ? -1 : 1);
+
+// 清空数组
+var array = [1, 2, 3, 4];
+function emptyArray() {
+    array = [];
+    array.length = 0;  //效率更高的方法来清空数组
+}
+emptyArray();
+

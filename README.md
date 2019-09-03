@@ -24,3 +24,11 @@
 - 将任意值转换为布尔类型 getBoolean()
 - 排列 sort()
 - 一个数组中的最大/最小值 minOfArray()
+- 数组中获取最大值和最小值 Math.max和Math.min
+- 确保数组的长度 Array().fill()
+- 数组映射 Array.map()
+- 数组截断 splice(); slice()
+- 过滤掉数组中的falsy值 map和filter
+- 获取数组的最后一项 slice()
+- 过滤并排序字符串列表 filteredAndSortedKeywords()
+- 清空数组 array.length=0
