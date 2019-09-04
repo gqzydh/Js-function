@@ -5,71 +5,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JavaScript 常用方法，函数学习</title>
+    <link rel="stylesheet" type="text/css" href="css/css.css">
     <script src="js/public.js"></script>
 </head>
 <body>
-    <div style="text-align: right" id="todayTime"></div>
+    <div class="top_time" id="todayTime"></div>
     <hr/>
-    <dl>
-        <dt><h2>Array</h2></dt>
-        <ul>
-            <li>二维数组按行排序 sortArr()</li>
-            <li>两个数组间互相校验 inArray()</li>
-            <li>扁平化嵌套数组  flat()</li>
-            <li>数组去重的3种方法 new Set()</li>
-            <li>数组去重合并 combine()</li>
-            <li>拍平多维数组</li>
-            <li>检测所有数组元素的大小 every()</li>
-            <li>【筛选】排除所有较小的值 filter()</li>
-            <li>在数组中搜索 filterItems()</li>
-            <li>用对象的属性查找数组里的对象 find()</li>
-            <li>找出指定元素出现的所有位置 indexOf()</li>
-            <li>查找到一个元素在数组中所有的索引（下标）lastIndexOf()</li>
-            <li>判断一个元素是否在数组里，不在则更新数组 updateVegetablesCollection()</li>
-            <li>合并两个数组 .push.apply()</li>
-            <li>数组里所有值的和</li>
-            <li>将二维数组转化为一维</li>
-            <li>计算数组中每个元素出现的次数</li> 
-            <li>按属性对object分类 groupBy()</li> 
-            <li>包含在对象数组中的数组 reduce()</li>   
-            <li>测试数组元素的值 isBiggerThan10()</li>  
-            <li>判断数组元素中是否存在某个值 checkAvailability()</li>     
-            <li>将任意值转换为布尔类型 getBoolean()</li>
-            <li>排列 sort()</li>
-            <li>一个数组中的最大/最小值 minOfArray()</li>
-            <li>数组中获取最大值和最小值 Math.max和Math.min</li>
-            <li>确保数组的长度 Array().fill()</li>
-            <li>数组映射 Array.map()</li>
-            <li>数组截断 splice(); slice()</li>
-            <li>过滤掉数组中的falsy值 map和filter</li>
-            <li>获取数组的最后一项 slice()</li>
-            <li>过滤并排序字符串列表 filteredAndSortedKeywords()</li>
-            <li>清空数组 array.length=0</li>
+    <div id="tab">
+        <ul class="list">
+            <li class="list_nav active">Array</li>
+            <li class="list_nav">Object</li>
+            <li class="list_nav">Util</li>
+            <li class="list_nav">Util-pc</li>
+            <li class="list_nav">Util-from</li>
+            <li class="list_nav">Util-timr</li>
         </ul>
-    </dl>
-    <hr />
-    <dl>
-        <dt>
-            <h2>Object/对象</h2>
-        </dt>
-        <ul>
-            <li>合并对象 ...</li>
-            <li>有条件的添加对象属性 ...</li>
-            <li>结构原始数据</li>
-            <li>动态更改对象的key</li>
-            <li>判断对象的数据类型 isType()</li>
-            <li>检查某对象是否有某属性</li>
-            <li>数据类型转换</li>
-            <li>转换为字符串</li>
-            <li>转换为数值</li>
-            <li>浮点数转换为整数</li>
-            <li>|还可以用于从整数的末尾删除任意数量的数字</li>
-            <li>用!!操作符转换布尔值</li>
+        <ul class="tab">
+            <li class="tab_nav on">
+                <ol>
+                    <li>二维数组按行排序 sortArr()</li>
+                    <li>两个数组间互相校验 inArray()</li>
+                    <li>扁平化嵌套数组 flat()</li>
+                    <li>数组去重的3种方法 new Set()</li>
+                    <li>数组去重合并 combine()</li>
+                    <li>拍平多维数组</li>
+                    <li>检测所有数组元素的大小 every()</li>
+                    <li>【筛选】排除所有较小的值 filter()</li>
+                    <li>在数组中搜索 filterItems()</li>
+                    <li>用对象的属性查找数组里的对象 find()</li>
+                    <li>找出指定元素出现的所有位置 indexOf()</li>
+                    <li>查找到一个元素在数组中所有的索引（下标）lastIndexOf()</li>
+                    <li>判断一个元素是否在数组里，不在则更新数组 updateVegetablesCollection()</li>
+                    <li>合并两个数组 .push.apply()</li>
+                    <li>数组里所有值的和</li>
+                    <li>将二维数组转化为一维</li>
+                    <li>计算数组中每个元素出现的次数</li>
+                    <li>按属性对object分类 groupBy()</li>
+                    <li>包含在对象数组中的数组 reduce()</li>
+                    <li>测试数组元素的值 isBiggerThan10()</li>
+                    <li>判断数组元素中是否存在某个值 checkAvailability()</li>
+                    <li>将任意值转换为布尔类型 getBoolean()</li>
+                    <li>排列 sort()</li>
+                    <li>一个数组中的最大/最小值 minOfArray()</li>
+                    <li>数组中获取最大值和最小值 Math.max和Math.min</li>
+                    <li>确保数组的长度 Array().fill()</li>
+                    <li>数组映射 Array.map()</li>
+                    <li>数组截断 splice(); slice()</li>
+                    <li>过滤掉数组中的falsy值 map和filter</li>
+                    <li>获取数组的最后一项 slice()</li>
+                    <li>过滤并排序字符串列表 filteredAndSortedKeywords()</li>
+                    <li>清空数组 array.length=0</li>
+                </ol>
+            </li>
+            <li class="tab_nav">
+                <ol>
+                    <li>合并对象 ...</li>
+                    <li>有条件的添加对象属性 ...</li>
+                    <li>结构原始数据</li>
+                    <li>动态更改对象的key</li>
+                    <li>判断对象的数据类型 isType()</li>
+                    <li>检查某对象是否有某属性</li>
+                    <li>数据类型转换</li>
+                    <li>转换为字符串</li>
+                    <li>转换为数值</li>
+                    <li>浮点数转换为整数</li>
+                    <li>|还可以用于从整数的末尾删除任意数量的数字</li>
+                    <li>用!!操作符转换布尔值</li>
+                </ol>
+            </li>
+            <li class="tab_nav">
+                <ol>
+                    <li>判断数组元素中是否存在某个值 checkAvailability()</li>
+                    <li>交集 intersect()</li>
+                    <li>并集 union()</li>
+                    <li>差集，2个集合的差集 在arr不存在 difference()</li>
+                    <li>集合去重复 uniquelize()</li>
+                </ol>
+            </li>
+            <li class="tab_nav">
+                <ol>
+                    <li>阻止冒泡 stopBubble()</li>
+                    <li>阻止浏览器的默认行为 stopDefault()</li>
+                    <li>文件下载 downloadFile()</li>
+                    <li>根据文件大小换算合适单位,并保留两位小数 getFileSize()</li>
+                    <li>用正则表达式实现html转码 htmlEncodeByRegExp()</li>
+                    <li>用正则表达式实现title换行 titleBrByRegExp()</li>
+                    <li>获取光标位置函数 getCursortPosition()</li>
+                    <li>设置光标位置函数 setCaretPosition()</li>
+                    <li>字符串固定位置插入字符 insertStr()</li>
+                    <li>给URL追加参数 urlAddParmert()</li>
+                    <li>得到文件的扩展名 getFileExt()</li>
+                    <li>字符串编码 strEncode()</li>
+                    <li>字符串解码 strDencode()</li>
+                    <li>字符串转正形 strParseInt()</li>
+                    <li>字符串转Float形 strParseFloat()</li>
+                </ol>
+            </li>
+            <li class="tab_nav">
+                <ol>
+                    <li>判断指定名称的复选框是否被选中 chkCheckCha()</li>
+                    <li>得到指定名称的复选框被选中个数 checkChangedOnly()</li>
+                    <li>得到指定名称的单个被选中的复选择框的值 getValueCheckOnly()</li>
+                    <li>得到多个复选框的值 getCheckVals()</li>
+                    <li>得到一些复选框的值 getSomeChVals()</li>
+                    <li>得到指定名称的有多个值的多个复选框的值 getCheckValues()</li>
+                    <li>判断复选框的状态 decideCheckState()</li>
+                    <li>复选框的值是否全为0 checkStringz()</li>
+                    <li>复选框的值是否全为1 checkStringO()</li>
+                    <li>复选框全选 checkboxAll()</li>
+                    <li>复选框反选 inverSelect()</li>
+                    <li>取消全选或反选 clearSelect()</li>
+                    <li>点击删除按钮时使用 dele()</li>
+                    <li>校验Ip地址格式 checkIp()</li>
+                    <li>是否是由字母或数字组成的字符串 checkLetOrNum()</li>
+                    <li>取字符串的第index的字符 interceptStr()</li>
+                    <li>检查字符串中beindex位置到endindex位置之间是否全由targer组成 checkStr()</li>
+                    <li>验证字符串中的某一段是否全为0 checkString()</li>
+                    <li>判断两个字符串是否相等 decideString()</li>
+                    <li>将字符串转换成数字 stringToNumber()</li>
+                    <li>验证是否是整数或小数 checkIntAndFloat()</li>
+                    <li>验证是否是整数或只有一位小数点的小数 checkFloat()</li>
+                    <li>验证是否两位数以内的正整数 checkTwoInt()</li>
+                    <li>验证数字 checkNumber()</li>
+                    <li>验证是否是两位小数的正实数 checkTowLenFloat()</li>
+                    <li>验证是否是两位或一位小数的正实数 checkTowLenFloatt()</li>
+                    <li>验证是否是整数或只有2位小数的数 checkTowFloat()</li>
+                    <li>验证是否有空格 checkSpace()</li>
+                    <li>检查一个数是否是整数则位数在8以内 checkIntLeng()</li>
+                    <li>检查一个数是否是整数则位数在2以内 checkIntTwoLeng()</li>
+                    <li>验证正整数 checkInt()</li>
+                    <li>验证非负数 checkNegative()</li>
+                    <li>分割IP地址 getIpNum()</li>
+                    <li>判断IP大小 decideIp()</li>
+                    <li>验证是否全是空格 checkAllSpace()</li>
+                    <li>验证身份证号是否正确 isCardNo()</li>
+                    <li>判断字符串是否为空 isEmpty()</li>
+                    <li>验证是否为电话号码（座机） isTelephone()</li>
+                    <li>验证是否为手机号码（移动手机） isMobilePhone()</li>
+                    <li>验证是否为电子邮箱 isEmail()</li>
+                    <li>验证是否为邮编 isZip()</li>
+                    <li>验证字符串是否是中文 isChines()</li>
+                    <li>生成指定位数的随机整数 getRandomNum()</li>
+                    <li>判断包含关系 jsContains()</li>
+                    <li>随机数UUID makeUUID()</li>
+                    <li>得到项目的基地址 getContextPath()</li>
+                    <li>显示提示信息 showInfoMessage()</li>
+                    <li>判断是否为空 isNull()</li>
+                    <li>变量是否为数字 isNumber()</li>
+                    
+                </ol>
+            </li>
+            <li class="tab_nav">
+                <ol>
+                    <li>校验时间格式 checkTime()</li>
+                    <li>时间变化 dateToString()</li>
+                    <li>时间由秒数转化成hh:mm:ss格式 timeTohhmmss()</li>
+                    <li>日期对象转换为指定格式的字符串 dateToStr()</li>
+                    <li>获取今天日期，星期几 getTodayDate()</li>
+                    <li>获取一段时间中含有的周末数量 getIntervalWeekends()</li>
+                    <li>时间戳转成时间 timeStamp2String()</li>
+                    <li>判断闰年 isLeapYear()</li>
+                    <li>日期计算 dateAdd()</li>
+                    <li>比较日期差 dateDiff()</li>
+                    <li>字符串转换为日期对象 strToDate()</li>
+                    <li>把指定格式的字符串转换为日期对象yyyy-MM-dd HH:mm:ss strFormatToDate()</li>
+                    <li>日期对象转换为毫秒数 dateToLong()</li>
+                    <li>毫秒转换为日期对象 longToDate()</li>
+                    <li>判断字符串是否为日期格式 isDate()</li>
+                    <li>把日期分割成数组 [年、月、日、时、分、秒] toArray()</li>
+                    <li>取得日期数据信息 datePart()</li>
+                    <li>取得当前日期所在月的最大天数 maxDayOfDate()</li>
+                </ol>
+            </li>
         </ul>
-    </dl>
+    </div>
 </body>
 <script src="js/array.js"></script>
 <script src="js/object.js"></script>
+<script src="js/util.js"></script>
+<script src="js/util-pc.js"></script>
+<script src="js/util-from.js"></script>
+
 
 <script>
     // function add(a, b) {
@@ -85,7 +201,6 @@
     // console.log("====", a1);
     // console.log("====", a2);
     // console.log("====", a3);
-
-
+    
 </script>
 </html>
